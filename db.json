@@ -1,0 +1,1517 @@
+{
+  "branches": [
+    {
+      "id": "sukhumvit",
+      "name": "กังสดาน"
+    }
+  ],
+  "suppliers": [
+    {
+      "id": "cp_dairy",
+      "name": "CP Dairy Products",
+      "contact": "sales@cpdairy.com",
+      "phone": "02-123-4567"
+    },
+    {
+      "id": "bluekoff",
+      "name": "Bluekoff Coffee Co.",
+      "contact": "orders@bluekoff.com",
+      "phone": "02-987-6543"
+    },
+    {
+      "id": "seafood_exp",
+      "name": "Seafood Express",
+      "contact": "fresh@seafoodexpress.co.th",
+      "phone": "02-555-1122"
+    },
+    {
+      "id": "thai_fresh",
+      "name": "Thai Fresh Produce",
+      "contact": "order@thaifresh.com",
+      "phone": "02-444-5566"
+    },
+    {
+      "id": "betagro",
+      "name": "Betagro Group",
+      "contact": "betagro-order@betagro.com",
+      "phone": "02-333-4444"
+    },
+    {
+      "id": "ecopack",
+      "name": "EcoPack Packaging",
+      "contact": "sales@ecopack.co.th",
+      "phone": "02-888-9999"
+    }
+  ],
+  "inventory": [
+    {
+      "id": "item_1780589782489",
+      "name": "กล่องอาหาร",
+      "unit": "แพค",
+      "parLevel": 12,
+      "currentStock": {
+        "sukhumvit": 7
+      },
+      "price": 75,
+      "category": "General",
+      "supplierId": "cp_dairy"
+    },
+    {
+      "id": "item_1780589819122",
+      "name": "ถ้วยคราฟ 750ml",
+      "unit": "แพ็ค",
+      "parLevel": 4,
+      "currentStock": {
+        "sukhumvit": 1
+      },
+      "price": 75,
+      "category": "General",
+      "supplierId": "cp_dairy"
+    },
+    {
+      "id": "item_1780589836604",
+      "name": "ถ้วยคราฟ 500ml",
+      "unit": "แพ็ค",
+      "parLevel": 4,
+      "currentStock": {
+        "sukhumvit": 1
+      },
+      "price": 75,
+      "category": "General",
+      "supplierId": "cp_dairy"
+    },
+    {
+      "id": "item_1780589888002",
+      "name": "ถุงหูหิ้ว (ข้าว)",
+      "unit": "หิ้ว",
+      "parLevel": 1,
+      "currentStock": {
+        "sukhumvit": 1
+      },
+      "price": 350,
+      "category": "General",
+      "supplierId": "cp_dairy"
+    },
+    {
+      "id": "item_1780589903664",
+      "name": "ถุงหูหิ้ว (น้ำ)",
+      "unit": "แพ็ค",
+      "parLevel": 1,
+      "currentStock": {
+        "sukhumvit": 1
+      },
+      "price": 50,
+      "category": "General",
+      "supplierId": "cp_dairy"
+    },
+    {
+      "id": "item_1780589944072",
+      "name": "ช้อน",
+      "unit": "แพ็ค",
+      "parLevel": 20,
+      "currentStock": {
+        "sukhumvit": 1
+      },
+      "price": 30,
+      "category": "General",
+      "supplierId": "cp_dairy"
+    },
+    {
+      "id": "item_1780589955237",
+      "name": "ซ่อม",
+      "unit": "แพ็ค",
+      "parLevel": 20,
+      "currentStock": {
+        "sukhumvit": 1
+      },
+      "price": 30,
+      "category": "General",
+      "supplierId": "cp_dairy"
+    },
+    {
+      "id": "item_1780589991581",
+      "name": "พรืกน้ำปลา",
+      "unit": "แพ็ค",
+      "parLevel": 10,
+      "currentStock": {
+        "sukhumvit": 1
+      },
+      "price": 220,
+      "category": "General",
+      "supplierId": "cp_dairy"
+    },
+    {
+      "id": "item_1780590015015",
+      "name": "ไข่เป็ด",
+      "unit": "แผง",
+      "parLevel": 5,
+      "currentStock": {
+        "sukhumvit": 1
+      },
+      "price": 140,
+      "category": "General",
+      "supplierId": "cp_dairy"
+    },
+    {
+      "id": "item_1780590026489",
+      "name": "ไข่ไก่",
+      "unit": "แผง",
+      "parLevel": 5,
+      "currentStock": {
+        "sukhumvit": 1
+      },
+      "price": 130,
+      "category": "General",
+      "supplierId": "cp_dairy"
+    },
+    {
+      "id": "item_1780590067290",
+      "name": "น้ำมันพืช",
+      "unit": "ลิตร",
+      "parLevel": 5,
+      "currentStock": {
+        "sukhumvit": 1
+      },
+      "price": 50,
+      "category": "General",
+      "supplierId": "cp_dairy"
+    },
+    {
+      "id": "item_1780590087749",
+      "name": "โค๊ก",
+      "unit": "ถาด",
+      "parLevel": 1,
+      "currentStock": {
+        "sukhumvit": 1
+      },
+      "price": 300,
+      "category": "General",
+      "supplierId": "cp_dairy"
+    },
+    {
+      "id": "item_1780590105527",
+      "name": "โค๊ด ซีโร่",
+      "unit": "แพ็ค",
+      "parLevel": 1,
+      "currentStock": {
+        "sukhumvit": 1
+      },
+      "price": 100,
+      "category": "General",
+      "supplierId": "cp_dairy"
+    },
+    {
+      "id": "item_1780590120436",
+      "name": "แป๊ปซี่",
+      "unit": "ถาด",
+      "parLevel": 1,
+      "currentStock": {
+        "sukhumvit": 0
+      },
+      "price": 300,
+      "category": "General",
+      "supplierId": "cp_dairy"
+    },
+    {
+      "id": "item_1780590139350",
+      "name": "น้ำเปล่า",
+      "unit": "แพ็ค",
+      "parLevel": 2,
+      "currentStock": {
+        "sukhumvit": 1
+      },
+      "price": 43,
+      "category": "General",
+      "supplierId": "cp_dairy"
+    },
+    {
+      "id": "item_1780590153572",
+      "name": "หลอด",
+      "unit": "แพ็ค",
+      "parLevel": 1,
+      "currentStock": {
+        "sukhumvit": 1
+      },
+      "price": 60,
+      "category": "General",
+      "supplierId": "cp_dairy"
+    },
+    {
+      "id": "item_1780590173464",
+      "name": "ลูกแม็ค",
+      "unit": "กล่องเล็ก",
+      "parLevel": 2,
+      "currentStock": {
+        "sukhumvit": 1
+      },
+      "price": 20,
+      "category": "General",
+      "supplierId": "cp_dairy"
+    }
+  ],
+  "settings": {
+    "telegramBotToken": "8877695923:AAH2BXM0pHYY6NoyNR2zmNe1Gyh2-da4ftc",
+    "telegramChatId": "5670549822",
+    "notificationsEnabled": true
+  },
+  "logs": [
+    {
+      "id": "log_initial",
+      "timestamp": "2026-06-04T13:47:20.452Z",
+      "type": "system",
+      "message": "Database initialized with standard inventory schema.",
+      "branchId": "system"
+    },
+    {
+      "id": "log_1780590361707_vgni6",
+      "timestamp": "2026-06-04T16:26:01.707Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780589782489",
+      "itemName": "กล่องอาหาร",
+      "prevStock": 0,
+      "newStock": 0,
+      "user": "ทดสอบ"
+    },
+    {
+      "id": "log_1780590361707_dqq0y",
+      "timestamp": "2026-06-04T16:26:01.707Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780589819122",
+      "itemName": "ถ้วยคราฟ 750ml",
+      "prevStock": 0,
+      "newStock": 0,
+      "user": "ทดสอบ"
+    },
+    {
+      "id": "log_1780590361707_ggagx",
+      "timestamp": "2026-06-04T16:26:01.707Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780589836604",
+      "itemName": "ถ้วยคราฟ 500ml",
+      "prevStock": 0,
+      "newStock": 0,
+      "user": "ทดสอบ"
+    },
+    {
+      "id": "log_1780590361707_6cfq5",
+      "timestamp": "2026-06-04T16:26:01.707Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780589888002",
+      "itemName": "ถุงหูหิ้ว (ข้าว)",
+      "prevStock": 0,
+      "newStock": 0,
+      "user": "ทดสอบ"
+    },
+    {
+      "id": "log_1780590361707_19xml",
+      "timestamp": "2026-06-04T16:26:01.707Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780589903664",
+      "itemName": "ถุงหูหิ้ว (น้ำ)",
+      "prevStock": 0,
+      "newStock": 0,
+      "user": "ทดสอบ"
+    },
+    {
+      "id": "log_1780590361707_72ztj",
+      "timestamp": "2026-06-04T16:26:01.707Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780589944072",
+      "itemName": "ช้อน",
+      "prevStock": 0,
+      "newStock": 0,
+      "user": "ทดสอบ"
+    },
+    {
+      "id": "log_1780590361707_yu9x6",
+      "timestamp": "2026-06-04T16:26:01.707Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780589955237",
+      "itemName": "ซ่อม",
+      "prevStock": 0,
+      "newStock": 0,
+      "user": "ทดสอบ"
+    },
+    {
+      "id": "log_1780590361707_uxc7t",
+      "timestamp": "2026-06-04T16:26:01.707Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780589991581",
+      "itemName": "พรืกน้ำปลา",
+      "prevStock": 0,
+      "newStock": 0,
+      "user": "ทดสอบ"
+    },
+    {
+      "id": "log_1780590361707_8kiiz",
+      "timestamp": "2026-06-04T16:26:01.707Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780590015015",
+      "itemName": "ไข่เป็ด",
+      "prevStock": 0,
+      "newStock": 0,
+      "user": "ทดสอบ"
+    },
+    {
+      "id": "log_1780590361707_p810c",
+      "timestamp": "2026-06-04T16:26:01.707Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780590026489",
+      "itemName": "ไข่ไก่",
+      "prevStock": 0,
+      "newStock": 0,
+      "user": "ทดสอบ"
+    },
+    {
+      "id": "log_1780590361707_77uvz",
+      "timestamp": "2026-06-04T16:26:01.707Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780590067290",
+      "itemName": "น้ำมันพืช",
+      "prevStock": 0,
+      "newStock": 0,
+      "user": "ทดสอบ"
+    },
+    {
+      "id": "log_1780590361707_9b71i",
+      "timestamp": "2026-06-04T16:26:01.707Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780590087749",
+      "itemName": "โค๊ก",
+      "prevStock": 0,
+      "newStock": 0,
+      "user": "ทดสอบ"
+    },
+    {
+      "id": "log_1780590361707_siwqe",
+      "timestamp": "2026-06-04T16:26:01.707Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780590105527",
+      "itemName": "โค๊ด ซีโร่",
+      "prevStock": 0,
+      "newStock": 0,
+      "user": "ทดสอบ"
+    },
+    {
+      "id": "log_1780590361707_w4b6p",
+      "timestamp": "2026-06-04T16:26:01.707Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780590120436",
+      "itemName": "แป๊ปซี่",
+      "prevStock": 0,
+      "newStock": 0,
+      "user": "ทดสอบ"
+    },
+    {
+      "id": "log_1780590361707_9egf0",
+      "timestamp": "2026-06-04T16:26:01.707Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780590139350",
+      "itemName": "น้ำเปล่า",
+      "prevStock": 0,
+      "newStock": 0,
+      "user": "ทดสอบ"
+    },
+    {
+      "id": "log_1780590361707_17eks",
+      "timestamp": "2026-06-04T16:26:01.707Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780590153572",
+      "itemName": "หลอด",
+      "prevStock": 0,
+      "newStock": 0,
+      "user": "ทดสอบ"
+    },
+    {
+      "id": "log_1780590361707_0q78y",
+      "timestamp": "2026-06-04T16:26:01.707Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780590173464",
+      "itemName": "ลูกแม็ค",
+      "prevStock": 0,
+      "newStock": 0,
+      "user": "ทดสอบ"
+    },
+    {
+      "id": "log_1780590400878_5jmkm",
+      "timestamp": "2026-06-04T16:26:40.878Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780589782489",
+      "itemName": "กล่องอาหาร",
+      "prevStock": 0,
+      "newStock": 1,
+      "user": "แขร"
+    },
+    {
+      "id": "log_1780590400878_mfjbc",
+      "timestamp": "2026-06-04T16:26:40.878Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780589819122",
+      "itemName": "ถ้วยคราฟ 750ml",
+      "prevStock": 0,
+      "newStock": 1,
+      "user": "แขร"
+    },
+    {
+      "id": "log_1780590400878_ug67k",
+      "timestamp": "2026-06-04T16:26:40.878Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780589836604",
+      "itemName": "ถ้วยคราฟ 500ml",
+      "prevStock": 0,
+      "newStock": 1,
+      "user": "แขร"
+    },
+    {
+      "id": "log_1780590400878_grevg",
+      "timestamp": "2026-06-04T16:26:40.878Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780589888002",
+      "itemName": "ถุงหูหิ้ว (ข้าว)",
+      "prevStock": 0,
+      "newStock": 1,
+      "user": "แขร"
+    },
+    {
+      "id": "log_1780590400878_dbrro",
+      "timestamp": "2026-06-04T16:26:40.878Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780589903664",
+      "itemName": "ถุงหูหิ้ว (น้ำ)",
+      "prevStock": 0,
+      "newStock": 1,
+      "user": "แขร"
+    },
+    {
+      "id": "log_1780590400878_gntig",
+      "timestamp": "2026-06-04T16:26:40.878Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780589944072",
+      "itemName": "ช้อน",
+      "prevStock": 0,
+      "newStock": 1,
+      "user": "แขร"
+    },
+    {
+      "id": "log_1780590400878_vomc1",
+      "timestamp": "2026-06-04T16:26:40.878Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780589955237",
+      "itemName": "ซ่อม",
+      "prevStock": 0,
+      "newStock": 1,
+      "user": "แขร"
+    },
+    {
+      "id": "log_1780590400878_r0pgw",
+      "timestamp": "2026-06-04T16:26:40.878Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780589991581",
+      "itemName": "พรืกน้ำปลา",
+      "prevStock": 0,
+      "newStock": 1,
+      "user": "แขร"
+    },
+    {
+      "id": "log_1780590400878_nwb01",
+      "timestamp": "2026-06-04T16:26:40.878Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780590015015",
+      "itemName": "ไข่เป็ด",
+      "prevStock": 0,
+      "newStock": 1,
+      "user": "แขร"
+    },
+    {
+      "id": "log_1780590400878_f9mw0",
+      "timestamp": "2026-06-04T16:26:40.878Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780590026489",
+      "itemName": "ไข่ไก่",
+      "prevStock": 0,
+      "newStock": 1,
+      "user": "แขร"
+    },
+    {
+      "id": "log_1780590400878_wb4hz",
+      "timestamp": "2026-06-04T16:26:40.878Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780590067290",
+      "itemName": "น้ำมันพืช",
+      "prevStock": 0,
+      "newStock": 1,
+      "user": "แขร"
+    },
+    {
+      "id": "log_1780590400878_9f75z",
+      "timestamp": "2026-06-04T16:26:40.878Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780590087749",
+      "itemName": "โค๊ก",
+      "prevStock": 0,
+      "newStock": 1,
+      "user": "แขร"
+    },
+    {
+      "id": "log_1780590400878_c44ta",
+      "timestamp": "2026-06-04T16:26:40.878Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780590105527",
+      "itemName": "โค๊ด ซีโร่",
+      "prevStock": 0,
+      "newStock": 1,
+      "user": "แขร"
+    },
+    {
+      "id": "log_1780590400878_s0hvw",
+      "timestamp": "2026-06-04T16:26:40.878Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780590120436",
+      "itemName": "แป๊ปซี่",
+      "prevStock": 0,
+      "newStock": 1,
+      "user": "แขร"
+    },
+    {
+      "id": "log_1780590400878_93og5",
+      "timestamp": "2026-06-04T16:26:40.878Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780590139350",
+      "itemName": "น้ำเปล่า",
+      "prevStock": 0,
+      "newStock": 1,
+      "user": "แขร"
+    },
+    {
+      "id": "log_1780590400878_s2axn",
+      "timestamp": "2026-06-04T16:26:40.878Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780590153572",
+      "itemName": "หลอด",
+      "prevStock": 0,
+      "newStock": 1,
+      "user": "แขร"
+    },
+    {
+      "id": "log_1780590400878_6yhdh",
+      "timestamp": "2026-06-04T16:26:40.878Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780590173464",
+      "itemName": "ลูกแม็ค",
+      "prevStock": 0,
+      "newStock": 1,
+      "user": "แขร"
+    },
+    {
+      "id": "log_1780590425940_97mxw",
+      "timestamp": "2026-06-04T16:27:05.940Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780589782489",
+      "itemName": "กล่องอาหาร",
+      "prevStock": 1,
+      "newStock": 1,
+      "user": "แขร"
+    },
+    {
+      "id": "log_1780590425940_qogko",
+      "timestamp": "2026-06-04T16:27:05.940Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780589819122",
+      "itemName": "ถ้วยคราฟ 750ml",
+      "prevStock": 1,
+      "newStock": 1,
+      "user": "แขร"
+    },
+    {
+      "id": "log_1780590425940_58j1c",
+      "timestamp": "2026-06-04T16:27:05.940Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780589836604",
+      "itemName": "ถ้วยคราฟ 500ml",
+      "prevStock": 1,
+      "newStock": 1,
+      "user": "แขร"
+    },
+    {
+      "id": "log_1780590425940_ki3sx",
+      "timestamp": "2026-06-04T16:27:05.940Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780589888002",
+      "itemName": "ถุงหูหิ้ว (ข้าว)",
+      "prevStock": 1,
+      "newStock": 1,
+      "user": "แขร"
+    },
+    {
+      "id": "log_1780590425940_1z9ux",
+      "timestamp": "2026-06-04T16:27:05.940Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780589903664",
+      "itemName": "ถุงหูหิ้ว (น้ำ)",
+      "prevStock": 1,
+      "newStock": 1,
+      "user": "แขร"
+    },
+    {
+      "id": "log_1780590425940_1grdm",
+      "timestamp": "2026-06-04T16:27:05.940Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780589944072",
+      "itemName": "ช้อน",
+      "prevStock": 1,
+      "newStock": 1,
+      "user": "แขร"
+    },
+    {
+      "id": "log_1780590425940_1c6nf",
+      "timestamp": "2026-06-04T16:27:05.940Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780589955237",
+      "itemName": "ซ่อม",
+      "prevStock": 1,
+      "newStock": 1,
+      "user": "แขร"
+    },
+    {
+      "id": "log_1780590425940_ir5x7",
+      "timestamp": "2026-06-04T16:27:05.940Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780589991581",
+      "itemName": "พรืกน้ำปลา",
+      "prevStock": 1,
+      "newStock": 1,
+      "user": "แขร"
+    },
+    {
+      "id": "log_1780590425940_wf70e",
+      "timestamp": "2026-06-04T16:27:05.940Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780590015015",
+      "itemName": "ไข่เป็ด",
+      "prevStock": 1,
+      "newStock": 1,
+      "user": "แขร"
+    },
+    {
+      "id": "log_1780590425940_2wmdf",
+      "timestamp": "2026-06-04T16:27:05.940Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780590026489",
+      "itemName": "ไข่ไก่",
+      "prevStock": 1,
+      "newStock": 1,
+      "user": "แขร"
+    },
+    {
+      "id": "log_1780590425940_q5gae",
+      "timestamp": "2026-06-04T16:27:05.940Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780590067290",
+      "itemName": "น้ำมันพืช",
+      "prevStock": 1,
+      "newStock": 1,
+      "user": "แขร"
+    },
+    {
+      "id": "log_1780590425940_5c6yu",
+      "timestamp": "2026-06-04T16:27:05.940Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780590087749",
+      "itemName": "โค๊ก",
+      "prevStock": 1,
+      "newStock": 1,
+      "user": "แขร"
+    },
+    {
+      "id": "log_1780590425940_ooxzf",
+      "timestamp": "2026-06-04T16:27:05.940Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780590105527",
+      "itemName": "โค๊ด ซีโร่",
+      "prevStock": 1,
+      "newStock": 1,
+      "user": "แขร"
+    },
+    {
+      "id": "log_1780590425940_dkrlt",
+      "timestamp": "2026-06-04T16:27:05.940Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780590120436",
+      "itemName": "แป๊ปซี่",
+      "prevStock": 1,
+      "newStock": 0,
+      "user": "แขร"
+    },
+    {
+      "id": "log_1780590425940_1m5sy",
+      "timestamp": "2026-06-04T16:27:05.940Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780590139350",
+      "itemName": "น้ำเปล่า",
+      "prevStock": 1,
+      "newStock": 1,
+      "user": "แขร"
+    },
+    {
+      "id": "log_1780590425940_dcgex",
+      "timestamp": "2026-06-04T16:27:05.940Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780590153572",
+      "itemName": "หลอด",
+      "prevStock": 1,
+      "newStock": 1,
+      "user": "แขร"
+    },
+    {
+      "id": "log_1780590425940_m2dhp",
+      "timestamp": "2026-06-04T16:27:05.940Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780590173464",
+      "itemName": "ลูกแม็ค",
+      "prevStock": 1,
+      "newStock": 1,
+      "user": "แขร"
+    },
+    {
+      "id": "log_1780590468678_uspmn",
+      "timestamp": "2026-06-04T16:27:48.678Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780589782489",
+      "itemName": "กล่องอาหาร",
+      "prevStock": 1,
+      "newStock": 1,
+      "user": "ดde"
+    },
+    {
+      "id": "log_1780590468678_vc12z",
+      "timestamp": "2026-06-04T16:27:48.678Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780589819122",
+      "itemName": "ถ้วยคราฟ 750ml",
+      "prevStock": 1,
+      "newStock": 1,
+      "user": "ดde"
+    },
+    {
+      "id": "log_1780590468678_6dq98",
+      "timestamp": "2026-06-04T16:27:48.678Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780589836604",
+      "itemName": "ถ้วยคราฟ 500ml",
+      "prevStock": 1,
+      "newStock": 1,
+      "user": "ดde"
+    },
+    {
+      "id": "log_1780590468678_01g33",
+      "timestamp": "2026-06-04T16:27:48.678Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780589888002",
+      "itemName": "ถุงหูหิ้ว (ข้าว)",
+      "prevStock": 1,
+      "newStock": 1,
+      "user": "ดde"
+    },
+    {
+      "id": "log_1780590468678_0j7uq",
+      "timestamp": "2026-06-04T16:27:48.678Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780589903664",
+      "itemName": "ถุงหูหิ้ว (น้ำ)",
+      "prevStock": 1,
+      "newStock": 1,
+      "user": "ดde"
+    },
+    {
+      "id": "log_1780590468678_gz74i",
+      "timestamp": "2026-06-04T16:27:48.678Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780589944072",
+      "itemName": "ช้อน",
+      "prevStock": 1,
+      "newStock": 0,
+      "user": "ดde"
+    },
+    {
+      "id": "log_1780590468678_ae5sr",
+      "timestamp": "2026-06-04T16:27:48.678Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780589955237",
+      "itemName": "ซ่อม",
+      "prevStock": 1,
+      "newStock": 1,
+      "user": "ดde"
+    },
+    {
+      "id": "log_1780590468678_frc7q",
+      "timestamp": "2026-06-04T16:27:48.678Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780589991581",
+      "itemName": "พรืกน้ำปลา",
+      "prevStock": 1,
+      "newStock": 1,
+      "user": "ดde"
+    },
+    {
+      "id": "log_1780590468678_qujix",
+      "timestamp": "2026-06-04T16:27:48.678Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780590015015",
+      "itemName": "ไข่เป็ด",
+      "prevStock": 1,
+      "newStock": 1,
+      "user": "ดde"
+    },
+    {
+      "id": "log_1780590468678_la24u",
+      "timestamp": "2026-06-04T16:27:48.678Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780590026489",
+      "itemName": "ไข่ไก่",
+      "prevStock": 1,
+      "newStock": 1,
+      "user": "ดde"
+    },
+    {
+      "id": "log_1780590468678_wkcpt",
+      "timestamp": "2026-06-04T16:27:48.678Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780590067290",
+      "itemName": "น้ำมันพืช",
+      "prevStock": 1,
+      "newStock": 1,
+      "user": "ดde"
+    },
+    {
+      "id": "log_1780590468678_90b33",
+      "timestamp": "2026-06-04T16:27:48.678Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780590087749",
+      "itemName": "โค๊ก",
+      "prevStock": 1,
+      "newStock": 1,
+      "user": "ดde"
+    },
+    {
+      "id": "log_1780590468678_0te1h",
+      "timestamp": "2026-06-04T16:27:48.678Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780590105527",
+      "itemName": "โค๊ด ซีโร่",
+      "prevStock": 1,
+      "newStock": 1,
+      "user": "ดde"
+    },
+    {
+      "id": "log_1780590468678_i989t",
+      "timestamp": "2026-06-04T16:27:48.678Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780590120436",
+      "itemName": "แป๊ปซี่",
+      "prevStock": 0,
+      "newStock": 0,
+      "user": "ดde"
+    },
+    {
+      "id": "log_1780590468678_kk4bf",
+      "timestamp": "2026-06-04T16:27:48.678Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780590139350",
+      "itemName": "น้ำเปล่า",
+      "prevStock": 1,
+      "newStock": 1,
+      "user": "ดde"
+    },
+    {
+      "id": "log_1780590468678_ab7v3",
+      "timestamp": "2026-06-04T16:27:48.678Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780590153572",
+      "itemName": "หลอด",
+      "prevStock": 1,
+      "newStock": 1,
+      "user": "ดde"
+    },
+    {
+      "id": "log_1780590468678_9qr0t",
+      "timestamp": "2026-06-04T16:27:48.678Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780590173464",
+      "itemName": "ลูกแม็ค",
+      "prevStock": 1,
+      "newStock": 1,
+      "user": "ดde"
+    },
+    {
+      "id": "log_1780590469704_tg",
+      "timestamp": "2026-06-04T16:27:49.704Z",
+      "type": "telegram_alert",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "message": "Sent low stock alert via Telegram containing 12 items.",
+      "user": "System"
+    },
+    {
+      "id": "log_1780590530820_x0to4",
+      "timestamp": "2026-06-04T16:28:50.820Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780589782489",
+      "itemName": "กล่องอาหาร",
+      "prevStock": 1,
+      "newStock": 1,
+      "user": "wdwd"
+    },
+    {
+      "id": "log_1780590530820_56r53",
+      "timestamp": "2026-06-04T16:28:50.820Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780589819122",
+      "itemName": "ถ้วยคราฟ 750ml",
+      "prevStock": 1,
+      "newStock": 1,
+      "user": "wdwd"
+    },
+    {
+      "id": "log_1780590530820_5y7vi",
+      "timestamp": "2026-06-04T16:28:50.820Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780589836604",
+      "itemName": "ถ้วยคราฟ 500ml",
+      "prevStock": 1,
+      "newStock": 1,
+      "user": "wdwd"
+    },
+    {
+      "id": "log_1780590530820_404yi",
+      "timestamp": "2026-06-04T16:28:50.820Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780589888002",
+      "itemName": "ถุงหูหิ้ว (ข้าว)",
+      "prevStock": 1,
+      "newStock": 1,
+      "user": "wdwd"
+    },
+    {
+      "id": "log_1780590530820_pdeh1",
+      "timestamp": "2026-06-04T16:28:50.820Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780589903664",
+      "itemName": "ถุงหูหิ้ว (น้ำ)",
+      "prevStock": 1,
+      "newStock": 1,
+      "user": "wdwd"
+    },
+    {
+      "id": "log_1780590530820_xxe90",
+      "timestamp": "2026-06-04T16:28:50.820Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780589944072",
+      "itemName": "ช้อน",
+      "prevStock": 0,
+      "newStock": 1,
+      "user": "wdwd"
+    },
+    {
+      "id": "log_1780590530820_kd2nx",
+      "timestamp": "2026-06-04T16:28:50.820Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780589955237",
+      "itemName": "ซ่อม",
+      "prevStock": 1,
+      "newStock": 1,
+      "user": "wdwd"
+    },
+    {
+      "id": "log_1780590530820_clghh",
+      "timestamp": "2026-06-04T16:28:50.820Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780589991581",
+      "itemName": "พรืกน้ำปลา",
+      "prevStock": 1,
+      "newStock": 1,
+      "user": "wdwd"
+    },
+    {
+      "id": "log_1780590530820_74e3z",
+      "timestamp": "2026-06-04T16:28:50.820Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780590015015",
+      "itemName": "ไข่เป็ด",
+      "prevStock": 1,
+      "newStock": 1,
+      "user": "wdwd"
+    },
+    {
+      "id": "log_1780590530820_scmfl",
+      "timestamp": "2026-06-04T16:28:50.820Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780590026489",
+      "itemName": "ไข่ไก่",
+      "prevStock": 1,
+      "newStock": 1,
+      "user": "wdwd"
+    },
+    {
+      "id": "log_1780590530820_4oy8x",
+      "timestamp": "2026-06-04T16:28:50.820Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780590067290",
+      "itemName": "น้ำมันพืช",
+      "prevStock": 1,
+      "newStock": 1,
+      "user": "wdwd"
+    },
+    {
+      "id": "log_1780590530820_1ngqp",
+      "timestamp": "2026-06-04T16:28:50.820Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780590087749",
+      "itemName": "โค๊ก",
+      "prevStock": 1,
+      "newStock": 1,
+      "user": "wdwd"
+    },
+    {
+      "id": "log_1780590530820_4gigo",
+      "timestamp": "2026-06-04T16:28:50.820Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780590105527",
+      "itemName": "โค๊ด ซีโร่",
+      "prevStock": 1,
+      "newStock": 1,
+      "user": "wdwd"
+    },
+    {
+      "id": "log_1780590530820_tuk8g",
+      "timestamp": "2026-06-04T16:28:50.820Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780590120436",
+      "itemName": "แป๊ปซี่",
+      "prevStock": 0,
+      "newStock": 0,
+      "user": "wdwd"
+    },
+    {
+      "id": "log_1780590530820_evl3l",
+      "timestamp": "2026-06-04T16:28:50.820Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780590139350",
+      "itemName": "น้ำเปล่า",
+      "prevStock": 1,
+      "newStock": 1,
+      "user": "wdwd"
+    },
+    {
+      "id": "log_1780590530820_5mbs9",
+      "timestamp": "2026-06-04T16:28:50.820Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780590153572",
+      "itemName": "หลอด",
+      "prevStock": 1,
+      "newStock": 1,
+      "user": "wdwd"
+    },
+    {
+      "id": "log_1780590530820_ekxab",
+      "timestamp": "2026-06-04T16:28:50.820Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780590173464",
+      "itemName": "ลูกแม็ค",
+      "prevStock": 1,
+      "newStock": 1,
+      "user": "wdwd"
+    },
+    {
+      "id": "log_1780590531907_tg",
+      "timestamp": "2026-06-04T16:28:51.907Z",
+      "type": "telegram_alert",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "message": "Sent low stock alert via Telegram containing 12 items.",
+      "user": "System"
+    },
+    {
+      "id": "log_1780590586657_7fcyw",
+      "timestamp": "2026-06-04T16:29:46.657Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780589782489",
+      "itemName": "กล่องอาหาร",
+      "prevStock": 1,
+      "newStock": 7,
+      "user": "cw"
+    },
+    {
+      "id": "log_1780590586657_0o94x",
+      "timestamp": "2026-06-04T16:29:46.657Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780589819122",
+      "itemName": "ถ้วยคราฟ 750ml",
+      "prevStock": 1,
+      "newStock": 1,
+      "user": "cw"
+    },
+    {
+      "id": "log_1780590586657_rj19t",
+      "timestamp": "2026-06-04T16:29:46.657Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780589836604",
+      "itemName": "ถ้วยคราฟ 500ml",
+      "prevStock": 1,
+      "newStock": 1,
+      "user": "cw"
+    },
+    {
+      "id": "log_1780590586657_25kkj",
+      "timestamp": "2026-06-04T16:29:46.657Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780589888002",
+      "itemName": "ถุงหูหิ้ว (ข้าว)",
+      "prevStock": 1,
+      "newStock": 1,
+      "user": "cw"
+    },
+    {
+      "id": "log_1780590586657_ud7cl",
+      "timestamp": "2026-06-04T16:29:46.657Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780589903664",
+      "itemName": "ถุงหูหิ้ว (น้ำ)",
+      "prevStock": 1,
+      "newStock": 1,
+      "user": "cw"
+    },
+    {
+      "id": "log_1780590586657_eiroa",
+      "timestamp": "2026-06-04T16:29:46.657Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780589944072",
+      "itemName": "ช้อน",
+      "prevStock": 1,
+      "newStock": 1,
+      "user": "cw"
+    },
+    {
+      "id": "log_1780590586657_9ax95",
+      "timestamp": "2026-06-04T16:29:46.657Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780589955237",
+      "itemName": "ซ่อม",
+      "prevStock": 1,
+      "newStock": 1,
+      "user": "cw"
+    },
+    {
+      "id": "log_1780590586657_th0zb",
+      "timestamp": "2026-06-04T16:29:46.657Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780589991581",
+      "itemName": "พรืกน้ำปลา",
+      "prevStock": 1,
+      "newStock": 1,
+      "user": "cw"
+    },
+    {
+      "id": "log_1780590586657_jj60g",
+      "timestamp": "2026-06-04T16:29:46.657Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780590015015",
+      "itemName": "ไข่เป็ด",
+      "prevStock": 1,
+      "newStock": 1,
+      "user": "cw"
+    },
+    {
+      "id": "log_1780590586657_mr3lh",
+      "timestamp": "2026-06-04T16:29:46.657Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780590026489",
+      "itemName": "ไข่ไก่",
+      "prevStock": 1,
+      "newStock": 1,
+      "user": "cw"
+    },
+    {
+      "id": "log_1780590586657_ubrgn",
+      "timestamp": "2026-06-04T16:29:46.657Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780590067290",
+      "itemName": "น้ำมันพืช",
+      "prevStock": 1,
+      "newStock": 1,
+      "user": "cw"
+    },
+    {
+      "id": "log_1780590586657_wdims",
+      "timestamp": "2026-06-04T16:29:46.657Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780590087749",
+      "itemName": "โค๊ก",
+      "prevStock": 1,
+      "newStock": 1,
+      "user": "cw"
+    },
+    {
+      "id": "log_1780590586657_lnobe",
+      "timestamp": "2026-06-04T16:29:46.657Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780590105527",
+      "itemName": "โค๊ด ซีโร่",
+      "prevStock": 1,
+      "newStock": 1,
+      "user": "cw"
+    },
+    {
+      "id": "log_1780590586657_oyplt",
+      "timestamp": "2026-06-04T16:29:46.657Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780590120436",
+      "itemName": "แป๊ปซี่",
+      "prevStock": 0,
+      "newStock": 0,
+      "user": "cw"
+    },
+    {
+      "id": "log_1780590586657_iv9ug",
+      "timestamp": "2026-06-04T16:29:46.657Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780590139350",
+      "itemName": "น้ำเปล่า",
+      "prevStock": 1,
+      "newStock": 1,
+      "user": "cw"
+    },
+    {
+      "id": "log_1780590586657_78i5e",
+      "timestamp": "2026-06-04T16:29:46.657Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780590153572",
+      "itemName": "หลอด",
+      "prevStock": 1,
+      "newStock": 1,
+      "user": "cw"
+    },
+    {
+      "id": "log_1780590586657_se13f",
+      "timestamp": "2026-06-04T16:29:46.657Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780590173464",
+      "itemName": "ลูกแม็ค",
+      "prevStock": 1,
+      "newStock": 1,
+      "user": "cw"
+    },
+    {
+      "id": "log_1780590587516_tg",
+      "timestamp": "2026-06-04T16:29:47.516Z",
+      "type": "telegram_alert",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "message": "Sent low stock alert via Telegram containing 12 items.",
+      "user": "System"
+    }
+  ]
+}
