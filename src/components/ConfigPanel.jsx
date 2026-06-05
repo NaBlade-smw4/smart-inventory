@@ -101,8 +101,8 @@ export default function ConfigPanel({
     });
   };
 
-  const saveEdit = (id) => {
-    onEditItem(id, {
+  const saveEdit = async (id) => {
+    const success = await onEditItem(id, {
       name: editForm.name,
       unit: editForm.unit,
       minThreshold: parseFloat(editForm.minThreshold),
@@ -111,7 +111,9 @@ export default function ConfigPanel({
       category: editForm.category,
       supplierId: editForm.supplierId
     });
-    setEditingItem(null);
+    if (success) {
+      setEditingItem(null);
+    }
   };
 
   const handleAddBranchSubmit = (e) => {
@@ -129,9 +131,11 @@ export default function ConfigPanel({
     setEditBranchForm({ name: branch.name });
   };
 
-  const saveEditBranch = (id) => {
-    onEditBranch(id, { name: editBranchForm.name });
-    setEditingBranch(null);
+  const saveEditBranch = async (id) => {
+    const success = await onEditBranch(id, { name: editBranchForm.name });
+    if (success) {
+      setEditingBranch(null);
+    }
   };
 
   return (

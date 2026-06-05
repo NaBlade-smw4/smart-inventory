@@ -195,11 +195,14 @@ export default function App() {
       if (data.success) {
         triggerToast('อัปเดตข้อมูลรายการสินค้าสำเร็จ!', 'success');
         loadAllData();
+        return true;
       } else {
         triggerToast('ไม่สามารถแก้ไขรายการสินค้าได้', 'error');
+        return false;
       }
     } catch (err) {
       triggerToast('เกิดข้อผิดพลาดในการเชื่อมต่อ API', 'error');
+      return false;
     }
   };
 
@@ -251,11 +254,14 @@ export default function App() {
       if (data.success) {
         triggerToast('อัปเดตข้อมูลสาขาสำเร็จ!', 'success');
         loadAllData();
+        return true;
       } else {
         triggerToast('ไม่สามารถแก้ไขข้อมูลสาขาได้', 'error');
+        return false;
       }
     } catch (err) {
       triggerToast('เกิดข้อผิดพลาดในการเชื่อมต่อ API', 'error');
+      return false;
     }
   };
 

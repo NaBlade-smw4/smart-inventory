@@ -4,16 +4,35 @@ const cors = require('cors');
 const fs = require('fs');
 const path = require('path');
 const https = require('https');
+const Redis = require('ioredis');
 const { createClient } = require('@vercel/kv');
 
-// Initialize KV client dynamically supporting multiple prefixes (KV, STORAGE, REDIS)
+// 1. Initialize TCP Redis client (supported by standard Redis integration)
+const redisUrl = process.env.REDIS_URL || process.env.STORAGE_URL || process.env.KV_URL;
+let redisClient = null;
+
+if (redisUrl && (redisUrl.startsWith('redis://') || redisUrl.startsWith('rediss://'))) {
+  try {
+    redisClient = new Redis(redisUrl);
+    console.log('Redis client initialized via TCP connection string.');
+  } catch (error) {
+    console.error('Failed to initialize TCP Redis:', error);
+  }
+}
+
+// 2. Initialize REST Vercel KV client (fallback if HTTP REST credentials are provided)
 const kvUrl = process.env.KV_REST_API_URL || process.env.STORAGE_REST_API_URL || process.env.REDIS_REST_API_URL;
 const kvToken = process.env.KV_REST_API_TOKEN || process.env.STORAGE_REST_API_TOKEN || process.env.REDIS_REST_API_TOKEN;
+let kvClient = null;
 
-const kv = createClient({
-  url: kvUrl || '',
-  token: kvToken || ''
-});
+if (kvUrl && kvToken) {
+  try {
+    kvClient = createClient({ url: kvUrl, token: kvToken });
+    console.log('Vercel KV REST client initialized.');
+  } catch (error) {
+    console.error('Failed to initialize REST Vercel KV:', error);
+  }
+}
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -90,14 +109,30 @@ function migrateDbSchema(data) {
 
 // Database Read/Write Helpers
 async function readDb() {
-  if (kvUrl && kvToken) {
+  if (redisClient) {
     try {
-      const data = await kv.get('inventory_db');
+      const dataStr = await redisClient.get('inventory_db');
+      if (!dataStr) {
+        await writeDb(defaultDb);
+        return defaultDb;
+      }
+      const data = JSON.parse(dataStr);
+      if (migrateDbSchema(data)) {
+        await writeDb(data);
+      }
+      return data;
+    } catch (error) {
+      console.error('Error reading from Redis:', error);
+      return defaultDb;
+    }
+  } else if (kvClient) {
+    try {
+      const data = await kvClient.get('inventory_db');
       if (!data) return defaultDb;
       
       // Auto migration check
       if (migrateDbSchema(data)) {
-        await kv.set('inventory_db', data);
+        await kvClient.set('inventory_db', data);
       }
       return data;
     } catch (error) {
@@ -126,9 +161,17 @@ async function readDb() {
 }
 
 async function writeDb(data) {
-  if (kvUrl && kvToken) {
+  if (redisClient) {
     try {
-      await kv.set('inventory_db', data);
+      await redisClient.set('inventory_db', JSON.stringify(data));
+      return true;
+    } catch (error) {
+      console.error('Error writing to Redis:', error);
+      return false;
+    }
+  } else if (kvClient) {
+    try {
+      await kvClient.set('inventory_db', data);
       return true;
     } catch (error) {
       console.error('Error writing to Vercel KV:', error);
