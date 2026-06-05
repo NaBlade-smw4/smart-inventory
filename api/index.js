@@ -490,10 +490,10 @@ app.post('/api/stocktake', async (req, res) => {
     alertMessage += `Items requiring attention:\n`;
 
     lowStockAlerts.forEach((alert, index) => {
+      const emoji = alert.currentStock === 0 ? '🔴' : (alert.currentStock <= alert.minThreshold ? '🟠' : '🟢');
       alertMessage += `${index + 1}. <b>${alert.name}</b>\n`;
-      alertMessage += `   • สต็อกปัจจุบัน: <code>${alert.currentStock} / ${alert.minThreshold} ${alert.unit}</code> (ต่ำกว่าเกณฑ์ขั้นต่ำ!)\n`;
-      alertMessage += `   • 🛒 แนะนำสั่งเพิ่ม: <b>${alert.shortage.toFixed(1)} ${alert.unit}</b> (เพื่อให้ถึงเกณฑ์ปกติ <b>${alert.normalLevel}</b>)\n`;
-      alertMessage += `   • ผู้จัดจำหน่าย: <b>${alert.supplierName}</b> (${alert.supplierPhone || 'N/A'})\n\n`;
+      alertMessage += `   • สต็อกปัจจุบัน: <code>${alert.currentStock} / ${alert.minThreshold} ${alert.unit}</code> (${emoji})\n`;
+      alertMessage += `   • 🛒 แนะนำสั่งเพิ่ม: <b>${alert.shortage.toFixed(1)} ${alert.unit}</b>\n\n`;
     });
 
     alertMessage += `🛒 <i>Please generate purchase orders for these items immediately.</i>`;
