@@ -100,8 +100,9 @@ export default function IpadStockTake({ branches, inventory, onStockTakeSubmit, 
 
   const getStockStatus = (item, count) => {
     const currentCount = parseFloat(count) || 0;
+    const minVal = item.minThreshold !== undefined ? item.minThreshold : item.parLevel;
     if (currentCount === 0) return 'critical';
-    if (currentCount < item.parLevel) return 'warning';
+    if (currentCount <= minVal) return 'warning';
     return 'safe';
   };
 
@@ -131,7 +132,8 @@ export default function IpadStockTake({ branches, inventory, onStockTakeSubmit, 
   // Calculations for summary modal
   const lowStockCount = filteredItems.filter(item => {
     const val = counts[item.id] !== undefined ? counts[item.id] : 0;
-    return val < item.parLevel;
+    const minVal = item.minThreshold !== undefined ? item.minThreshold : item.parLevel;
+    return val <= minVal;
   }).length;
 
   const totalItemsCount = inventory.length;
@@ -212,6 +214,12 @@ export default function IpadStockTake({ branches, inventory, onStockTakeSubmit, 
           const status = getStockStatus(item, currentCount);
           const isModified = modifiedItems.has(item.id);
 
+          const minVal = item.minThreshold !== undefined ? item.minThreshold : item.parLevel;
+          const normalVal = item.normalLevel !== undefined ? item.normalLevel : minVal * 2;
+
+          // Generate unique and sorted preset buttons
+          const presets = [...new Set([0, Math.ceil(minVal / 2), minVal, normalVal, Math.ceil(normalVal * 1.5)])].sort((a, b) => a - b);
+
           return (
             <div 
               key={item.id} 
@@ -226,18 +234,18 @@ export default function IpadStockTake({ branches, inventory, onStockTakeSubmit, 
                   <h3 className="ipad-item-name">{item.name}</h3>
                   <p className="ipad-item-meta">หมวดหมู่: {getThaiCategory(item.category)}</p>
                   <p className="ipad-item-meta" style={{ color: 'var(--text-muted)' }}>
-                    เกณฑ์สั่งซื้อขั้นต่ำ (Par): <b>{item.parLevel} {item.unit}</b>
+                    เกณฑ์ต่ำสุด (Min): <b>{minVal} {item.unit}</b> | เกณฑ์ปกติ (Par): <b>{normalVal} {item.unit}</b>
                   </p>
                 </div>
                 <span className={`badge ${getStatusBadgeClass(status)}`}>
-                  {status === 'critical' ? '🔴 หมด' : status === 'warning' ? '🟡 ใกล้หมด' : '🟢 ปกติ'}
+                  {status === 'critical' ? '🔴 หมด' : status === 'warning' ? '🟡 ต่ำกว่าเกณฑ์' : '🟢 ปกติ'}
                 </span>
               </div>
 
               {/* Tappable Presets */}
               <div className="presets-container">
-                <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)', alignSelf: 'center', marginRight: '4px' }}>ทางลัด:</span>
-                {[0, Math.ceil(item.parLevel / 2), item.parLevel, Math.ceil(item.parLevel * 1.5)].map(val => (
+                <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', alignSelf: 'center', marginRight: '4px' }}>ทางลัด:</span>
+                {presets.map(val => (
                   <button
                     key={val}
                     type="button"
@@ -250,7 +258,7 @@ export default function IpadStockTake({ branches, inventory, onStockTakeSubmit, 
               </div>
 
               <div className="ipad-card-actions">
-                <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
+                <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
                   หน่วย: <b>{item.unit}</b>
                 </div>
 
@@ -350,7 +358,7 @@ export default function IpadStockTake({ branches, inventory, onStockTakeSubmit, 
                   <b>{totalItemsCount - modifiedItems.size} รายการ</b>
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', color: lowStockCount > 0 ? 'var(--warning)' : 'inherit' }}>
-                  <span>รายการที่ต่ำกว่าเกณฑ์สั่งซื้อ:</span>
+                  <span>รายการที่ต่ำกว่าเกณฑ์ขั้นต่ำ:</span>
                   <b>{lowStockCount} รายการ</b>
                 </div>
               </div>

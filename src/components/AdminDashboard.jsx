@@ -44,9 +44,12 @@ export default function AdminDashboard({ dashboardData, branches, suppliers }) {
       let itemDetails = '';
       branches.forEach(b => {
         const stock = item.currentStock[b.id] || 0;
-        if (stock < item.parLevel) {
-          const shortage = item.parLevel - stock;
-          itemDetails += `  • ${b.name}: สั่งซื้อ **${shortage.toFixed(1)} ${item.unit}** (สต็อกปัจจุบัน: ${stock} / เกณฑ์ขั้นต่ำ: ${item.parLevel})\n`;
+        const minVal = item.minThreshold !== undefined ? item.minThreshold : item.parLevel;
+        const normalVal = item.normalLevel !== undefined ? item.normalLevel : minVal * 2;
+
+        if (stock <= minVal) {
+          const shortage = Math.max(0, normalVal - stock);
+          itemDetails += `  • ${b.name}: สั่งซื้อ **${shortage.toFixed(1)} ${item.unit}** (สต็อกปัจจุบัน: ${stock} / เกณฑ์ขั้นต่ำ: ${minVal} / เป้าหมายปกติ: ${normalVal})\n`;
         }
       });
 
@@ -150,7 +153,7 @@ export default function AdminDashboard({ dashboardData, branches, suppliers }) {
                     {counts.warning > 0 && (
                       <div 
                         style={{ width: `${warnPct}%`, background: 'var(--warning)' }} 
-                        title={`ใกล้หมด: ${counts.warning}`}
+                        title={`ต่ำกว่าเกณฑ์: ${counts.warning}`}
                       />
                     )}
                     {counts.critical > 0 && (
@@ -168,7 +171,7 @@ export default function AdminDashboard({ dashboardData, branches, suppliers }) {
                     </span>
                     <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
                       <span style={{ display: 'inline-block', width: '8px', height: '8px', borderRadius: '50%', background: 'var(--warning)' }}/>
-                      ใกล้หมด: {counts.warning}
+                      ต่ำกว่าเกณฑ์ขั้นต่ำ: {counts.warning}
                     </span>
                     <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
                       <span style={{ display: 'inline-block', width: '8px', height: '8px', borderRadius: '50%', background: 'var(--critical)' }}/>
@@ -188,7 +191,7 @@ export default function AdminDashboard({ dashboardData, branches, suppliers }) {
               🤖 ระบบแจ้งเตือน Telegram อัตโนมัติ
             </h2>
             <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', marginBottom: '16px' }}>
-              เมื่อผลการเช็คสต็อกต่ำกว่าเกณฑ์ที่กำหนด ระบบจะส่งการแจ้งเตือนไปยัง Telegram ทันที
+              เมื่อผลการเช็คสต็อกต่ำกว่าเกณฑ์ขั้นต่ำที่กำหนด ระบบจะส่งการแจ้งเตือนและคำนวณยอดสั่งซื้อด่วนไปยัง Telegram ทันที
             </p>
 
             <div 
@@ -215,7 +218,7 @@ export default function AdminDashboard({ dashboardData, branches, suppliers }) {
           </div>
           
           <div style={{ borderTop: '1px solid var(--panel-border)', paddingTop: '16px', marginTop: '16px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>ระบบสร้างร่างใบสั่งซื้อ (Auto-PO)</span>
+            <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>ระบบแนะนำสั่งซื้ออัตโนมัติ (Auto-PO)</span>
             <span style={{ fontSize: '0.85rem', color: 'var(--success)', fontWeight: 'bold' }}>เปิดใช้งาน ✅</span>
           </div>
         </div>
@@ -227,7 +230,7 @@ export default function AdminDashboard({ dashboardData, branches, suppliers }) {
           🚨 ศูนย์สั่งซื้อสินค้า (สร้างแบบร่าง PO อัตโนมัติ)
         </h2>
         <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', marginBottom: '16px' }}>
-          รายการสินค้าด้านล่างนี้มีจำนวนต่ำกว่าเกณฑ์สั่งซื้อขั้นต่ำ กดปุ่ม **สร้างใบสั่งซื้อ** เพื่อดูแบบร่างคำสั่งซื้อที่จัดกลุ่มตามซัพพลายเออร์แล้ว
+          รายการสินค้าด้านล่างนี้มีจำนวนต่ำกว่าหรือเท่ากับเกณฑ์ขั้นต่ำ กดปุ่ม **สร้างใบสั่งซื้อ** เพื่อดูแบบร่างคำสั่งซื้อที่จัดกลุ่มตามซัพพลายเออร์แล้ว
         </p>
 
         {lowStockItems.length === 0 ? (
@@ -244,13 +247,15 @@ export default function AdminDashboard({ dashboardData, branches, suppliers }) {
                   <th>ชื่อสินค้า</th>
                   <th>หมวดหมู่</th>
                   <th>ระดับสต็อกแต่ละสาขา</th>
-                  <th>เกณฑ์สั่งซื้อ</th>
+                  <th>เกณฑ์เตือน (Min) / เป้าหมาย (Normal)</th>
                   <th>ซัพพลายเออร์ / จัดการ</th>
                 </tr>
               </thead>
               <tbody>
                 {lowStockItems.map(item => {
                   const supplier = suppliers.find(s => s.id === item.supplierId);
+                  const minVal = item.minThreshold !== undefined ? item.minThreshold : item.parLevel;
+                  const normalVal = item.normalLevel !== undefined ? item.normalLevel : minVal * 2;
                   
                   return (
                     <tr key={item.id}>
@@ -260,7 +265,7 @@ export default function AdminDashboard({ dashboardData, branches, suppliers }) {
                         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
                           {branches.map(b => {
                             const stock = item.currentStock[b.id] || 0;
-                            const isLow = stock < item.parLevel;
+                            const isLow = stock <= minVal;
                             return (
                               <span 
                                 key={b.id} 
@@ -273,7 +278,9 @@ export default function AdminDashboard({ dashboardData, branches, suppliers }) {
                           })}
                         </div>
                       </td>
-                      <td><b>{item.parLevel} {item.unit}</b></td>
+                      <td>
+                        <b>{minVal} {item.unit}</b> <span style={{ color: 'var(--text-muted)', fontSize: '0.8rem' }}>/</span> <b>{normalVal} {item.unit}</b>
+                      </td>
                       <td>
                         <div style={{ display: 'flex', gap: '8px', alignItems: 'center', justifyContent: 'space-between' }}>
                           <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>

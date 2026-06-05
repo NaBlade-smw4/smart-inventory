@@ -23,7 +23,8 @@ export default function ConfigPanel({
   // New Item form state
   const [newItemName, setNewItemName] = useState('');
   const [newItemUnit, setNewItemUnit] = useState('หน่วย');
-  const [newItemPar, setNewItemPar] = useState('');
+  const [newItemMin, setNewItemMin] = useState('');
+  const [newItemNormal, setNewItemNormal] = useState('');
   const [newItemPrice, setNewItemPrice] = useState('');
   const [newItemCategory, setNewItemCategory] = useState('General');
   const [newItemSupplier, setNewItemSupplier] = useState('');
@@ -31,7 +32,7 @@ export default function ConfigPanel({
   // Editing state
   const [editingItem, setEditingItem] = useState(null);
   const [editForm, setEditForm] = useState({
-    name: '', unit: '', parLevel: '', price: '', category: '', supplierId: ''
+    name: '', unit: '', minThreshold: '', normalLevel: '', price: '', category: '', supplierId: ''
   });
 
   // Branch form state
@@ -60,15 +61,16 @@ export default function ConfigPanel({
 
   const handleAddItemSubmit = (e) => {
     e.preventDefault();
-    if (!newItemName.trim() || !newItemPar || !newItemPrice) {
-      alert('กรุณากรอก ชื่อสินค้า, เกณฑ์ขั้นต่ำ และ ราคา ให้ครบถ้วน');
+    if (!newItemName.trim() || !newItemMin || !newItemNormal || !newItemPrice) {
+      alert('กรุณากรอก ชื่อสินค้า, เกณฑ์ขั้นต่ำ, เกณฑ์ปกติ และ ราคา ให้ครบถ้วน');
       return;
     }
 
     const payload = {
       name: newItemName,
       unit: newItemUnit,
-      parLevel: parseFloat(newItemPar),
+      minThreshold: parseFloat(newItemMin),
+      normalLevel: parseFloat(newItemNormal),
       price: parseFloat(newItemPrice),
       category: newItemCategory,
       supplierId: newItemSupplier || (suppliers[0]?.id || '')
@@ -79,7 +81,8 @@ export default function ConfigPanel({
     // Reset Form
     setNewItemName('');
     setNewItemUnit('หน่วย');
-    setNewItemPar('');
+    setNewItemMin('');
+    setNewItemNormal('');
     setNewItemPrice('');
     setNewItemCategory('General');
     setNewItemSupplier('');
@@ -90,7 +93,8 @@ export default function ConfigPanel({
     setEditForm({
       name: item.name,
       unit: item.unit,
-      parLevel: item.parLevel,
+      minThreshold: item.minThreshold !== undefined ? item.minThreshold : item.parLevel,
+      normalLevel: item.normalLevel !== undefined ? item.normalLevel : (item.minThreshold !== undefined ? item.minThreshold * 2 : item.parLevel * 2),
       price: item.price,
       category: item.category,
       supplierId: item.supplierId
@@ -101,7 +105,8 @@ export default function ConfigPanel({
     onEditItem(id, {
       name: editForm.name,
       unit: editForm.unit,
-      parLevel: parseFloat(editForm.parLevel),
+      minThreshold: parseFloat(editForm.minThreshold),
+      normalLevel: parseFloat(editForm.normalLevel),
       price: parseFloat(editForm.price),
       category: editForm.category,
       supplierId: editForm.supplierId
@@ -209,19 +214,19 @@ export default function ConfigPanel({
 
         {/* Info card for large chain operations */}
         <div className="glass-panel" style={{ background: 'var(--primary-glow)', borderColor: 'rgba(59, 130, 246, 0.2)', display: 'flex', flexDirection: 'column', gap: '12px' }}>
-          <h2 style={{ fontSize: '1.25rem', color: 'var(--primary)' }}>💡 เคล็ดลับจากร้านอาหารสาขาขนาดใหญ่</h2>
+          <h2 style={{ fontSize: '1.25rem', color: 'var(--primary)' }}>💡 ระบบเกณฑ์สต็อกคู่ (Min Threshold & Normal Level)</h2>
           <p style={{ fontSize: '0.9rem', color: 'var(--text-main)', lineHeight: '1.6' }}>
-            ผู้บริหารธุรกิจร้านอาหารแฟรนไชส์และเชนขนาดใหญ่ใช้ระบบ <b>Par Levels</b> (เกณฑ์ขั้นต่ำ) อย่างเคร่งครัดเพื่อควบคุมต้นทุนและลดของเสีย:
+            การแบ่งเกณฑ์สต็อกออกเป็น 2 ระดับ เป็นกลยุทธ์ของเชนร้านอาหารระดับสากลเพื่อลดขั้นตอนการสั่งของซ้ำซ้อน:
           </p>
           <ul style={{ paddingLeft: '20px', fontSize: '0.85rem', display: 'flex', flexDirection: 'column', gap: '8px', color: 'var(--text-muted)' }}>
             <li>
-              <b>อันตรายของของหมดสต็อก:</b> ทำให้ลูกค้าต้องรอนาน และนำไปสู่รีวิวเชิงลบ ควรตั้งค่า Par level โดยอิงจากระยะเวลาจัดส่งของซัพพลายเออร์บวกเพิ่มความปลอดภัย 2 วัน
+              <b>เกณฑ์ขั้นต่ำ (Min Threshold):</b> เป็นระดับสต็อกวิกฤต (Safety Stock) ที่สะท้อนว่าสินค้าเหลือน้อยเกินไปแล้ว หากนับได้ <i>ต่ำกว่าหรือเท่ากับเกณฑ์นี้</i> ระบบจะส่งสัญญาณเตือนไป Telegram ทันที
             </li>
             <li>
-              <b>แจ้งเตือนรวมศูนย์:</b> แนะนำให้สร้างกลุ่ม Telegram ชื่อ <i>"[ชื่อร้าน] บริหารจัดการสต็อก"</i> เชิญผู้จัดการและเชฟเข้ากลุ่ม เพื่อให้ทุกคนเห็นการแจ้งเตือนพร้อมกัน
+              <b>เกณฑ์ปกติ (Normal Level):</b> เป็นระดับสต็อกสูงสุดที่ต้องการคงไว้ในครัว (Target Par) เมื่อระบบเตือนสั่งซื้อ ระบบจะคำนวณจำนวนสั่งซื้อแนะนำให้เพิ่มขึ้นจนเต็มเกณฑ์ปกติโดยอัตโนมัติ
             </li>
             <li>
-              <b>ความโปร่งใสในการตรวจสอบ:</b> การเช็คสต็อกผ่าน iPad บังคับให้พนักงานครัวต้องนับสินค้าจริงที่หน้างาน และมีการบันทึกชื่อผู้ตรวจเช็คทุกครั้ง
+              <b>ตัวอย่าง:</b> นมมีเกณฑ์ปกติ 20 แกลลอน เกณฑ์ขั้นต่ำ 10 แกลลอน หากพนักงานนับแล้วเหลือ 5 แกลลอน ระบบจะส่งใบสั่งซื้อแนะนำสั่งเพิ่ม <b>15 แกลลอน</b> เพื่อดึงยอดกลับมาที่ 20 แกลลอน
             </li>
           </ul>
         </div>
@@ -374,13 +379,24 @@ export default function ConfigPanel({
           </div>
 
           <div>
-            <label className="form-label">เกณฑ์ขั้นต่ำ (Par Threshold)</label>
+            <label className="form-label">เกณฑ์ขั้นต่ำ (Min Threshold)</label>
             <input
               type="number"
-              placeholder="จำนวนขั้นต่ำ"
+              placeholder="เช่น 10 (จุดเริ่มเตือน)"
               className="form-input"
-              value={newItemPar}
-              onChange={(e) => setNewItemPar(e.target.value)}
+              value={newItemMin}
+              onChange={(e) => setNewItemMin(e.target.value)}
+            />
+          </div>
+
+          <div>
+            <label className="form-label">เกณฑ์ปกติ (Normal Target)</label>
+            <input
+              type="number"
+              placeholder="เช่น 20 (เป้าหมายสต็อก)"
+              className="form-input"
+              value={newItemNormal}
+              onChange={(e) => setNewItemNormal(e.target.value)}
             />
           </div>
 
@@ -429,7 +445,8 @@ export default function ConfigPanel({
               <tr>
                 <th>รายละเอียดสินค้า</th>
                 <th>หมวดหมู่</th>
-                <th>เกณฑ์ขั้นต่ำ</th>
+                <th>เกณฑ์ขั้นต่ำ (Min)</th>
+                <th>เกณฑ์ปกติ (Normal)</th>
                 <th>ราคา (บาท)</th>
                 <th>ซัพพลายเออร์</th>
                 <th style={{ textAlign: 'right' }}>จัดการ</th>
@@ -439,6 +456,9 @@ export default function ConfigPanel({
               {inventory.map(item => {
                 const isEditing = editingItem === item.id;
                 const supplier = suppliers.find(s => s.id === (isEditing ? editForm.supplierId : item.supplierId));
+                
+                const minVal = item.minThreshold !== undefined ? item.minThreshold : item.parLevel;
+                const normalVal = item.normalLevel !== undefined ? item.normalLevel : (item.minThreshold !== undefined ? item.minThreshold * 2 : item.parLevel * 2);
 
                 return (
                   <tr key={item.id}>
@@ -484,13 +504,29 @@ export default function ConfigPanel({
                             type="number"
                             className="form-input"
                             style={{ padding: '6px 10px', fontSize: '0.85rem', width: '80px' }}
-                            value={editForm.parLevel}
-                            onChange={(e) => setEditForm({ ...editForm, parLevel: e.target.value })}
+                            value={editForm.minThreshold}
+                            onChange={(e) => setEditForm({ ...editForm, minThreshold: e.target.value })}
                           />
                           <span style={{ fontSize: '0.8rem' }}>{editForm.unit}</span>
                         </div>
                       ) : (
-                        <b>{item.parLevel} {item.unit}</b>
+                        <b>{minVal} {item.unit}</b>
+                      )}
+                    </td>
+                    <td>
+                      {isEditing ? (
+                        <div style={{ display: 'flex', gap: '4px', alignItems: 'center' }}>
+                          <input
+                            type="number"
+                            className="form-input"
+                            style={{ padding: '6px 10px', fontSize: '0.85rem', width: '80px' }}
+                            value={editForm.normalLevel}
+                            onChange={(e) => setEditForm({ ...editForm, normalLevel: e.target.value })}
+                          />
+                          <span style={{ fontSize: '0.8rem' }}>{editForm.unit}</span>
+                        </div>
+                      ) : (
+                        <b>{normalVal} {item.unit}</b>
                       )}
                     </td>
                     <td>

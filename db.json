@@ -48,205 +48,222 @@
       "id": "item_1780589782489",
       "name": "กล่องอาหาร",
       "unit": "แพค",
-      "parLevel": 12,
       "currentStock": {
-        "sukhumvit": 7
+        "sukhumvit": 13
       },
       "price": 75,
       "category": "General",
-      "supplierId": "cp_dairy"
+      "supplierId": "cp_dairy",
+      "minThreshold": 12,
+      "normalLevel": 24
     },
     {
       "id": "item_1780589819122",
       "name": "ถ้วยคราฟ 750ml",
       "unit": "แพ็ค",
-      "parLevel": 4,
       "currentStock": {
         "sukhumvit": 1
       },
       "price": 75,
       "category": "General",
-      "supplierId": "cp_dairy"
+      "supplierId": "cp_dairy",
+      "minThreshold": 4,
+      "normalLevel": 8
     },
     {
       "id": "item_1780589836604",
       "name": "ถ้วยคราฟ 500ml",
       "unit": "แพ็ค",
-      "parLevel": 4,
       "currentStock": {
         "sukhumvit": 1
       },
       "price": 75,
       "category": "General",
-      "supplierId": "cp_dairy"
+      "supplierId": "cp_dairy",
+      "minThreshold": 4,
+      "normalLevel": 8
     },
     {
       "id": "item_1780589888002",
       "name": "ถุงหูหิ้ว (ข้าว)",
       "unit": "หิ้ว",
-      "parLevel": 1,
       "currentStock": {
         "sukhumvit": 1
       },
       "price": 350,
       "category": "General",
-      "supplierId": "cp_dairy"
+      "supplierId": "cp_dairy",
+      "minThreshold": 1,
+      "normalLevel": 2
     },
     {
       "id": "item_1780589903664",
       "name": "ถุงหูหิ้ว (น้ำ)",
       "unit": "แพ็ค",
-      "parLevel": 1,
       "currentStock": {
         "sukhumvit": 1
       },
       "price": 50,
       "category": "General",
-      "supplierId": "cp_dairy"
+      "supplierId": "cp_dairy",
+      "minThreshold": 1,
+      "normalLevel": 2
     },
     {
       "id": "item_1780589944072",
       "name": "ช้อน",
       "unit": "แพ็ค",
-      "parLevel": 20,
       "currentStock": {
         "sukhumvit": 1
       },
       "price": 30,
       "category": "General",
-      "supplierId": "cp_dairy"
+      "supplierId": "cp_dairy",
+      "minThreshold": 20,
+      "normalLevel": 40
     },
     {
       "id": "item_1780589955237",
       "name": "ซ่อม",
       "unit": "แพ็ค",
-      "parLevel": 20,
       "currentStock": {
         "sukhumvit": 1
       },
       "price": 30,
       "category": "General",
-      "supplierId": "cp_dairy"
+      "supplierId": "cp_dairy",
+      "minThreshold": 20,
+      "normalLevel": 40
     },
     {
       "id": "item_1780589991581",
       "name": "พรืกน้ำปลา",
       "unit": "แพ็ค",
-      "parLevel": 10,
       "currentStock": {
         "sukhumvit": 1
       },
       "price": 220,
       "category": "General",
-      "supplierId": "cp_dairy"
+      "supplierId": "cp_dairy",
+      "minThreshold": 10,
+      "normalLevel": 20
     },
     {
       "id": "item_1780590015015",
       "name": "ไข่เป็ด",
       "unit": "แผง",
-      "parLevel": 5,
       "currentStock": {
         "sukhumvit": 1
       },
       "price": 140,
       "category": "General",
-      "supplierId": "cp_dairy"
+      "supplierId": "cp_dairy",
+      "minThreshold": 5,
+      "normalLevel": 10
     },
     {
       "id": "item_1780590026489",
       "name": "ไข่ไก่",
       "unit": "แผง",
-      "parLevel": 5,
       "currentStock": {
         "sukhumvit": 1
       },
       "price": 130,
       "category": "General",
-      "supplierId": "cp_dairy"
+      "supplierId": "cp_dairy",
+      "minThreshold": 5,
+      "normalLevel": 10
     },
     {
       "id": "item_1780590067290",
       "name": "น้ำมันพืช",
       "unit": "ลิตร",
-      "parLevel": 5,
       "currentStock": {
         "sukhumvit": 1
       },
       "price": 50,
       "category": "General",
-      "supplierId": "cp_dairy"
+      "supplierId": "cp_dairy",
+      "minThreshold": 5,
+      "normalLevel": 10
     },
     {
       "id": "item_1780590087749",
       "name": "โค๊ก",
       "unit": "ถาด",
-      "parLevel": 1,
       "currentStock": {
         "sukhumvit": 1
       },
       "price": 300,
       "category": "General",
-      "supplierId": "cp_dairy"
+      "supplierId": "cp_dairy",
+      "minThreshold": 1,
+      "normalLevel": 2
     },
     {
       "id": "item_1780590105527",
       "name": "โค๊ด ซีโร่",
       "unit": "แพ็ค",
-      "parLevel": 1,
       "currentStock": {
         "sukhumvit": 1
       },
       "price": 100,
       "category": "General",
-      "supplierId": "cp_dairy"
+      "supplierId": "cp_dairy",
+      "minThreshold": 1,
+      "normalLevel": 2
     },
     {
       "id": "item_1780590120436",
       "name": "แป๊ปซี่",
       "unit": "ถาด",
-      "parLevel": 1,
       "currentStock": {
         "sukhumvit": 0
       },
       "price": 300,
       "category": "General",
-      "supplierId": "cp_dairy"
+      "supplierId": "cp_dairy",
+      "minThreshold": 1,
+      "normalLevel": 2
     },
     {
       "id": "item_1780590139350",
       "name": "น้ำเปล่า",
       "unit": "แพ็ค",
-      "parLevel": 2,
       "currentStock": {
         "sukhumvit": 1
       },
       "price": 43,
       "category": "General",
-      "supplierId": "cp_dairy"
+      "supplierId": "cp_dairy",
+      "minThreshold": 2,
+      "normalLevel": 4
     },
     {
       "id": "item_1780590153572",
       "name": "หลอด",
       "unit": "แพ็ค",
-      "parLevel": 1,
       "currentStock": {
         "sukhumvit": 1
       },
       "price": 60,
       "category": "General",
-      "supplierId": "cp_dairy"
+      "supplierId": "cp_dairy",
+      "minThreshold": 1,
+      "normalLevel": 2
     },
     {
       "id": "item_1780590173464",
       "name": "ลูกแม็ค",
       "unit": "กล่องเล็ก",
-      "parLevel": 2,
       "currentStock": {
         "sukhumvit": 1
       },
       "price": 20,
       "category": "General",
-      "supplierId": "cp_dairy"
+      "supplierId": "cp_dairy",
+      "minThreshold": 2,
+      "normalLevel": 4
     }
   ],
   "settings": {
@@ -1512,6 +1529,39 @@
       "branchName": "กังสดาน",
       "message": "Sent low stock alert via Telegram containing 12 items.",
       "user": "System"
+    },
+    {
+      "id": "log_1780627079245_0dwji",
+      "timestamp": "2026-06-05T02:37:59.245Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780589782489",
+      "itemName": "กล่องอาหาร",
+      "prevStock": 7,
+      "newStock": 5,
+      "user": "Test Bot"
+    },
+    {
+      "id": "log_1780627080113_tg",
+      "timestamp": "2026-06-05T02:38:00.113Z",
+      "type": "telegram_alert",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "message": "Sent low stock alert via Telegram containing 1 items.",
+      "user": "System"
+    },
+    {
+      "id": "log_1780627086243_b1q7c",
+      "timestamp": "2026-06-05T02:38:06.243Z",
+      "type": "stock_update",
+      "branchId": "sukhumvit",
+      "branchName": "กังสดาน",
+      "itemId": "item_1780589782489",
+      "itemName": "กล่องอาหาร",
+      "prevStock": 5,
+      "newStock": 13,
+      "user": "Test Bot"
     }
   ]
 }

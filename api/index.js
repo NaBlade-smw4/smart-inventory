@@ -12,7 +12,7 @@ const DB_PATH = path.join(__dirname, '..', 'db.json');
 app.use(cors());
 app.use(express.json());
 
-// Default database state
+// Default database state (using minThreshold and normalLevel)
 const defaultDb = {
   branches: [
     { id: 'sukhumvit', name: 'Sukhumvit Branch (HQ)' },
@@ -28,12 +28,12 @@ const defaultDb = {
     { id: 'ecopack', name: 'EcoPack Packaging', contact: 'sales@ecopack.co.th', phone: '02-888-9999' }
   ],
   inventory: [
-    { id: 'item_1', name: 'Fresh Milk', unit: 'Gallon', parLevel: 10, currentStock: { sukhumvit: 12, siam: 15, ari: 4 }, price: 120, category: 'Dairy', supplierId: 'cp_dairy' },
-    { id: 'item_2', name: 'Premium Espresso Beans', unit: 'kg', parLevel: 8, currentStock: { sukhumvit: 10, siam: 7, ari: 3 }, price: 450, category: 'Beverages', supplierId: 'bluekoff' },
-    { id: 'item_3', name: 'Fresh Salmon Fillet', unit: 'kg', parLevel: 6, currentStock: { sukhumvit: 2, siam: 8, ari: 1 }, price: 650, category: 'Seafood', supplierId: 'seafood_exp' },
-    { id: 'item_4', name: 'Avocado (Ripened)', unit: 'kg', parLevel: 12, currentStock: { sukhumvit: 15, siam: 10, ari: 14 }, price: 180, category: 'Produce', supplierId: 'thai_fresh' },
-    { id: 'item_5', name: 'Takeaway Hot Cup 16oz', unit: 'Pack of 50', parLevel: 15, currentStock: { sukhumvit: 18, siam: 13, ari: 6 }, price: 150, category: 'Packaging', supplierId: 'ecopack' },
-    { id: 'item_6', name: 'Chicken Breast Fillet', unit: 'kg', parLevel: 20, currentStock: { sukhumvit: 25, siam: 18, ari: 22 }, price: 95, category: 'Meat', supplierId: 'betagro' }
+    { id: 'item_1', name: 'Fresh Milk', unit: 'Gallon', minThreshold: 10, normalLevel: 20, currentStock: { sukhumvit: 12, siam: 15, ari: 4 }, price: 120, category: 'Dairy', supplierId: 'cp_dairy' },
+    { id: 'item_2', name: 'Premium Espresso Beans', unit: 'kg', minThreshold: 8, normalLevel: 16, currentStock: { sukhumvit: 10, siam: 7, ari: 3 }, price: 450, category: 'Beverages', supplierId: 'bluekoff' },
+    { id: 'item_3', name: 'Fresh Salmon Fillet', unit: 'kg', minThreshold: 6, normalLevel: 12, currentStock: { sukhumvit: 2, siam: 8, ari: 1 }, price: 650, category: 'Seafood', supplierId: 'seafood_exp' },
+    { id: 'item_4', name: 'Avocado (Ripened)', unit: 'kg', minThreshold: 12, normalLevel: 24, currentStock: { sukhumvit: 15, siam: 10, ari: 14 }, price: 180, category: 'Produce', supplierId: 'thai_fresh' },
+    { id: 'item_5', name: 'Takeaway Hot Cup 16oz', unit: 'Pack of 50', minThreshold: 15, normalLevel: 30, currentStock: { sukhumvit: 18, siam: 13, ari: 6 }, price: 150, category: 'Packaging', supplierId: 'ecopack' },
+    { id: 'item_6', name: 'Chicken Breast Fillet', unit: 'kg', minThreshold: 20, normalLevel: 40, currentStock: { sukhumvit: 25, siam: 18, ari: 22 }, price: 95, category: 'Meat', supplierId: 'betagro' }
   ],
   settings: {
     telegramBotToken: '',
@@ -51,12 +51,45 @@ const defaultDb = {
   ]
 };
 
+// Helper to migrate schema from parLevel to minThreshold and normalLevel
+function migrateDbSchema(data) {
+  let migrated = false;
+  if (data && Array.isArray(data.inventory)) {
+    data.inventory = data.inventory.map(item => {
+      // Migrate parLevel to minThreshold and normalLevel
+      if (item.parLevel !== undefined && item.minThreshold === undefined) {
+        item.minThreshold = item.parLevel;
+        item.normalLevel = item.normalLevel !== undefined ? item.normalLevel : item.parLevel * 2;
+        delete item.parLevel;
+        migrated = true;
+      }
+      // Guarantee both fields exist
+      if (item.minThreshold === undefined) {
+        item.minThreshold = 0;
+        migrated = true;
+      }
+      if (item.normalLevel === undefined) {
+        item.normalLevel = item.minThreshold * 2;
+        migrated = true;
+      }
+      return item;
+    });
+  }
+  return migrated;
+}
+
 // Database Read/Write Helpers
 async function readDb() {
   if (process.env.KV_REST_API_URL) {
     try {
       const data = await kv.get('inventory_db');
-      return data || defaultDb;
+      if (!data) return defaultDb;
+      
+      // Auto migration check
+      if (migrateDbSchema(data)) {
+        await kv.set('inventory_db', data);
+      }
+      return data;
     } catch (error) {
       console.error('Error reading from Vercel KV:', error);
       return defaultDb;
@@ -67,8 +100,14 @@ async function readDb() {
         await writeDb(defaultDb);
         return defaultDb;
       }
-      const data = fs.readFileSync(DB_PATH, 'utf8');
-      return JSON.parse(data);
+      const rawData = fs.readFileSync(DB_PATH, 'utf8');
+      const data = JSON.parse(rawData);
+      
+      // Auto migration check
+      if (migrateDbSchema(data)) {
+        fs.writeFileSync(DB_PATH, JSON.stringify(data, null, 2), 'utf8');
+      }
+      return data;
     } catch (error) {
       console.error('Error reading database file:', error);
       return defaultDb;
@@ -234,7 +273,8 @@ app.post('/api/inventory', async (req, res) => {
     id: 'item_' + Date.now(),
     name: req.body.name,
     unit: req.body.unit,
-    parLevel: parseFloat(req.body.parLevel) || 0,
+    minThreshold: parseFloat(req.body.minThreshold) || 0,
+    normalLevel: parseFloat(req.body.normalLevel) || 0,
     currentStock: {},
     price: parseFloat(req.body.price) || 0,
     category: req.body.category || 'General',
@@ -263,11 +303,15 @@ app.put('/api/inventory/:id', async (req, res) => {
     ...existingItem,
     name: req.body.name || existingItem.name,
     unit: req.body.unit || existingItem.unit,
-    parLevel: parseFloat(req.body.parLevel) !== undefined ? parseFloat(req.body.parLevel) : existingItem.parLevel,
+    minThreshold: parseFloat(req.body.minThreshold) !== undefined ? parseFloat(req.body.minThreshold) : (existingItem.minThreshold !== undefined ? existingItem.minThreshold : existingItem.parLevel),
+    normalLevel: parseFloat(req.body.normalLevel) !== undefined ? parseFloat(req.body.normalLevel) : existingItem.normalLevel,
     price: parseFloat(req.body.price) !== undefined ? parseFloat(req.body.price) : existingItem.price,
     category: req.body.category || existingItem.category,
     supplierId: req.body.supplierId || existingItem.supplierId
   };
+
+  // Clean old fields if exist
+  if (updatedItem.parLevel !== undefined) delete updatedItem.parLevel;
 
   // Merge branch stock
   if (req.body.currentStock) {
@@ -320,19 +364,22 @@ app.post('/api/stocktake', async (req, res) => {
       // Update DB stock level
       item.currentStock[branchId] = newStock;
 
-      // Check if it is below par level
-      if (newStock < item.parLevel) {
+      // Check if it is below or equal to the minimum threshold
+      if (newStock <= item.minThreshold) {
         const supplier = db.suppliers.find(s => s.id === item.supplierId);
+        const shortage = Math.max(0, item.normalLevel - newStock);
+        
         lowStockAlerts.push({
           itemId,
           name: item.name,
           unit: item.unit,
           currentStock: newStock,
-          parLevel: item.parLevel,
+          minThreshold: item.minThreshold,
+          normalLevel: item.normalLevel,
           supplierName: supplier ? supplier.name : 'No Supplier Assigned',
           supplierPhone: supplier ? supplier.phone : '',
           supplierContact: supplier ? supplier.contact : '',
-          shortage: item.parLevel - newStock
+          shortage: shortage
         });
       }
 
@@ -367,8 +414,9 @@ app.post('/api/stocktake', async (req, res) => {
 
     lowStockAlerts.forEach((alert, index) => {
       alertMessage += `${index + 1}. <b>${alert.name}</b>\n`;
-      alertMessage += `   • Stock: <code>${alert.currentStock} / ${alert.parLevel} ${alert.unit}</code> (Shortage: <b>${alert.shortage.toFixed(1)}</b>)\n`;
-      alertMessage += `   • Supplier: <b>${alert.supplierName}</b> (${alert.supplierPhone || 'N/A'})\n\n`;
+      alertMessage += `   • สต็อกปัจจุบัน: <code>${alert.currentStock} / ${alert.minThreshold} ${alert.unit}</code> (ต่ำกว่าเกณฑ์ขั้นต่ำ!)\n`;
+      alertMessage += `   • 🛒 แนะนำสั่งเพิ่ม: <b>${alert.shortage.toFixed(1)} ${alert.unit}</b> (เพื่อให้ถึงเกณฑ์ปกติ <b>${alert.normalLevel}</b>)\n`;
+      alertMessage += `   • ผู้จัดจำหน่าย: <b>${alert.supplierName}</b> (${alert.supplierPhone || 'N/A'})\n\n`;
     });
 
     alertMessage += `🛒 <i>Please generate purchase orders for these items immediately.</i>`;
@@ -444,7 +492,7 @@ app.get('/api/dashboard', async (req, res) => {
       // Determine stock status for specific branch
       if (stock === 0) {
         itemsByBranchAndStatus[b.id].critical++;
-      } else if (stock < item.parLevel) {
+      } else if (stock <= item.minThreshold) {
         itemsByBranchAndStatus[b.id].warning++;
       } else {
         itemsByBranchAndStatus[b.id].safe++;
@@ -453,10 +501,10 @@ app.get('/api/dashboard', async (req, res) => {
 
     totalValue += globalStock * item.price;
 
-    // Check if item is low stock globally (sum of stocks < parLevel * branches)
+    // Check if item is low stock globally (sum of stocks <= minThreshold)
     let isLowInAnyBranch = false;
     db.branches.forEach(b => {
-      if ((item.currentStock[b.id] || 0) < item.parLevel) {
+      if ((item.currentStock[b.id] || 0) <= item.minThreshold) {
         isLowInAnyBranch = true;
       }
     });
