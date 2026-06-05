@@ -201,7 +201,10 @@ app.post('/api/branches', async (req, res) => {
   };
   
   db.branches.push(newBranch);
-  await writeDb(db);
+  const saved = await writeDb(db);
+  if (!saved) {
+    return res.status(500).json({ success: false, error: 'ไม่สามารถบันทึกข้อมูลลงฐานข้อมูลได้ กรุณาเชื่อมต่อ Vercel KV' });
+  }
   res.json({ success: true, branch: newBranch });
 });
 
@@ -211,7 +214,10 @@ app.put('/api/branches/:id', async (req, res) => {
   if (index === -1) return res.status(404).json({ success: false, message: 'Branch not found' });
   
   db.branches[index].name = req.body.name || db.branches[index].name;
-  await writeDb(db);
+  const saved = await writeDb(db);
+  if (!saved) {
+    return res.status(500).json({ success: false, error: 'ไม่สามารถบันทึกข้อมูลลงฐานข้อมูลได้ กรุณาเชื่อมต่อ Vercel KV' });
+  }
   res.json({ success: true, branch: db.branches[index] });
 });
 
@@ -221,7 +227,10 @@ app.delete('/api/branches/:id', async (req, res) => {
   if (index === -1) return res.status(404).json({ success: false, message: 'Branch not found' });
   
   db.branches.splice(index, 1);
-  await writeDb(db);
+  const saved = await writeDb(db);
+  if (!saved) {
+    return res.status(500).json({ success: false, error: 'ไม่สามารถบันทึกข้อมูลลงฐานข้อมูลได้ กรุณาเชื่อมต่อ Vercel KV' });
+  }
   res.json({ success: true });
 });
 
@@ -244,7 +253,10 @@ app.post('/api/settings', async (req, res) => {
     telegramChatId: req.body.telegramChatId || '',
     notificationsEnabled: !!req.body.notificationsEnabled
   };
-  await writeDb(db);
+  const saved = await writeDb(db);
+  if (!saved) {
+    return res.status(500).json({ success: false, error: 'ไม่สามารถบันทึกการตั้งค่าได้ กรุณาเชื่อมต่อ Vercel KV' });
+  }
   res.json({ success: true, settings: db.settings });
 });
 
@@ -287,7 +299,10 @@ app.post('/api/inventory', async (req, res) => {
   });
 
   db.inventory.push(newItem);
-  await writeDb(db);
+  const saved = await writeDb(db);
+  if (!saved) {
+    return res.status(500).json({ success: false, error: 'ไม่สามารถบันทึกรายการสินค้าได้ กรุณาเชื่อมต่อ Vercel KV' });
+  }
   res.json({ success: true, item: newItem });
 });
 
@@ -295,7 +310,7 @@ app.put('/api/inventory/:id', async (req, res) => {
   const db = await readDb();
   const index = db.inventory.findIndex(i => i.id === req.params.id);
   if (index === -1) {
-    return res.status(404).json({ success: false, message: 'Item not found' });
+    return res.status(404).json({ success: false, error: 'Item not found' });
   }
 
   const existingItem = db.inventory[index];
@@ -303,9 +318,9 @@ app.put('/api/inventory/:id', async (req, res) => {
     ...existingItem,
     name: req.body.name || existingItem.name,
     unit: req.body.unit || existingItem.unit,
-    minThreshold: parseFloat(req.body.minThreshold) !== undefined ? parseFloat(req.body.minThreshold) : (existingItem.minThreshold !== undefined ? existingItem.minThreshold : existingItem.parLevel),
-    normalLevel: parseFloat(req.body.normalLevel) !== undefined ? parseFloat(req.body.normalLevel) : existingItem.normalLevel,
-    price: parseFloat(req.body.price) !== undefined ? parseFloat(req.body.price) : existingItem.price,
+    minThreshold: req.body.minThreshold !== undefined ? parseFloat(req.body.minThreshold) : (existingItem.minThreshold !== undefined ? existingItem.minThreshold : existingItem.parLevel),
+    normalLevel: req.body.normalLevel !== undefined ? parseFloat(req.body.normalLevel) : existingItem.normalLevel,
+    price: req.body.price !== undefined ? parseFloat(req.body.price) : existingItem.price,
     category: req.body.category || existingItem.category,
     supplierId: req.body.supplierId || existingItem.supplierId
   };
@@ -323,7 +338,10 @@ app.put('/api/inventory/:id', async (req, res) => {
   }
 
   db.inventory[index] = updatedItem;
-  await writeDb(db);
+  const saved = await writeDb(db);
+  if (!saved) {
+    return res.status(500).json({ success: false, error: 'ไม่สามารถบันทึกข้อมูลได้ (หากใช้งานบน Vercel กรุณาตรวจสอบว่าได้ทำการเชื่อมต่อ Vercel KV ในเมนู Storage แล้ว)' });
+  }
   res.json({ success: true, item: updatedItem });
 });
 
@@ -331,11 +349,14 @@ app.delete('/api/inventory/:id', async (req, res) => {
   const db = await readDb();
   const index = db.inventory.findIndex(i => i.id === req.params.id);
   if (index === -1) {
-    return res.status(404).json({ success: false, message: 'Item not found' });
+    return res.status(404).json({ success: false, error: 'Item not found' });
   }
 
   db.inventory.splice(index, 1);
-  await writeDb(db);
+  const saved = await writeDb(db);
+  if (!saved) {
+    return res.status(500).json({ success: false, error: 'ไม่สามารถลบรายการสินค้าได้ กรุณาเชื่อมต่อ Vercel KV' });
+  }
   res.json({ success: true });
 });
 
@@ -400,7 +421,10 @@ app.post('/api/stocktake', async (req, res) => {
   });
 
   // Write base stock updates to DB
-  await writeDb(db);
+  const savedMain = await writeDb(db);
+  if (!savedMain) {
+    return res.status(500).json({ success: false, error: 'ไม่สามารถบันทึกผลการเช็คสต็อกได้ กรุณาเชื่อมต่อ Vercel KV' });
+  }
 
   // Send Telegram Alerts if there are low stock items and notifications are enabled
   let telegramSent = false;

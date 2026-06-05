@@ -46,8 +46,8 @@
   "inventory": [
     {
       "id": "item_1780589782489",
-      "name": "กล่องอาหาร",
-      "unit": "แพค",
+      "name": "??????????",
+      "unit": "???",
       "currentStock": {
         "sukhumvit": 13
       },
@@ -55,7 +55,7 @@
       "category": "General",
       "supplierId": "cp_dairy",
       "minThreshold": 12,
-      "normalLevel": 24
+      "normalLevel": 25
     },
     {
       "id": "item_1780589819122",
