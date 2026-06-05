@@ -3,7 +3,16 @@ const cors = require('cors');
 const fs = require('fs');
 const path = require('path');
 const https = require('https');
-const { kv } = require('@vercel/kv');
+const { createClient } = require('@vercel/kv');
+
+// Initialize KV client dynamically supporting multiple prefixes (KV, STORAGE, REDIS)
+const kvUrl = process.env.KV_REST_API_URL || process.env.STORAGE_REST_API_URL || process.env.REDIS_REST_API_URL;
+const kvToken = process.env.KV_REST_API_TOKEN || process.env.STORAGE_REST_API_TOKEN || process.env.REDIS_REST_API_TOKEN;
+
+const kv = createClient({
+  url: kvUrl || '',
+  token: kvToken || ''
+});
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -80,7 +89,7 @@ function migrateDbSchema(data) {
 
 // Database Read/Write Helpers
 async function readDb() {
-  if (process.env.KV_REST_API_URL) {
+  if (kvUrl && kvToken) {
     try {
       const data = await kv.get('inventory_db');
       if (!data) return defaultDb;
@@ -116,7 +125,7 @@ async function readDb() {
 }
 
 async function writeDb(data) {
-  if (process.env.KV_REST_API_URL) {
+  if (kvUrl && kvToken) {
     try {
       await kv.set('inventory_db', data);
       return true;
