@@ -1,3 +1,4 @@
+// Trigger automatic redeployment on Vercel after KV database connection.
 const express = require('express');
 const cors = require('cors');
 const fs = require('fs');
